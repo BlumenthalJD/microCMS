@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>New User</title>
+		<style type="text/css" media="screen">
+			input[type="text"]
+			{
+				height: 20px;
+			}
+			input[type="file"]
+			{
+				height: 25px;
+			}
+			form label
+			{
+				font-size: 22px;
+			}
+			select
+			{
+				-webkit-appearance: menulist-button;
+				height: 27px;
+			}
+		</style>
+		<script>
+			function updateLinkNum(select) 
+			{
+				var selectedLinkNum=select.value;
+				for (var i=1; i<=selectedLinkNum; i++)
+				{
+					document.getElementById("fweb"+i+"label").style.visibility="visible";
+					document.getElementById("fweb"+i+"desclabel").style.visibility="visible";
+					document.getElementById("fweb"+i).style.visibility="visible";
+					document.getElementById("fweb"+i+"desc").style.visibility="visible";
+				}
+				for (var j=i; j<4; j++)
+				{
+					document.getElementById("fweb"+j+"label").style.visibility="hidden";
+					document.getElementById("fweb"+j+"desclabel").style.visibility="hidden";
+					document.getElementById("fweb"+j).style.visibility="hidden";
+					document.getElementById("fweb"+j+"desc").style.visibility="hidden";
+				}
+			}
+			
+			function updatePicNum(select) 
+			{
+				var selectedPicNum=select.value;
+				for (var i=1; i<=selectedPicNum; i++)
+				{
+					document.getElementById("pic"+i).style.visibility="visible";
+					document.getElementById("pic"+i+"label").style.visibility="visible";
+				}
+				for (var j=i; j<4; j++)
+				{
+					document.getElementById("pic"+j).style.visibility="hidden";
+					document.getElementById("pic"+j+"label").style.visibility="hidden";
+				}	
+			}
+		</script>
+	</head>
+	<body>
+		<h1 style="text-align: center;">New User</h1>
+			<form action="savepage.cgi" method="post" enctype="multipart/form-data">
+				<div style="width: 49.5%; float: left; text-align: right;">
+					<label for="fname">First Name</label><br>
+					<label for="lname">Last Name</label><br>
+					<label for="bcolor">Background Color</label><br>
+					<label for="tcolor">Text Color</label><br>
+					<label for="lcolor">Link Color</label><br>
+					<label for="vlcolor">Visited Link Color</label><br>
+					<label>Number of Favorite Websites</label><br>
+					<label id="fweb1label" for="fweb1">Favorite Website 1</label><br>
+					<label id="fweb1desclabel" for="fweb1desc">Favorite Website 1 Description</label><br>
+					<label id="fweb2label" for="fweb2">Favorite Website 2</label><br>
+					<label id="fweb2desclabel" for="fweb2desc">Favorite Website 2 Description</label><br>
+					<label id="fweb3label" for="fweb3">Favorite Website 3</label><br>
+					<label id="fweb3desclabel" for="fweb3desc">Favorite Website 3 Description</label><br>
+					<label>Number of Favorite Pictures</label><br>
+					<label id="pic1label" for="pic1">Picture 1</label><br>
+					<label id="pic2label" for="pic2">Picture 2</label><br>
+					<label id="pic3label" for="pic3">Picture 3</label><br>
+					<label for="email">Email Address</label><br>
+					<label for="password">Password</label><br>
+				</div>
+				<div style="width: 49.5%; margin-left: 10px; float:left;">
+					<input id="fname" type="text" name="fname"><br>		
+					<input id="lname" type="text" name="lname"><br>
+					<input id="bcolor" type="text" name="bcolor"><br>					
+					<input id="tcolor" type="text" name="tcolor"><br>					
+					<input id="lcolor" type="text" name="lcolor"><br>
+					<input id="vlcolor" type="text" name="vlcolor"><br>
+					<select name='numLinks' id='numLinks' onchange="updateLinkNum(this)" >
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3" selected="selected">3</option>
+					</select><br>
+					<input id="fweb1" type="text" name="fweb1"><br>					
+					<input id="fweb1desc" type="text" name="fweb1desc"><br>
+					<input id="fweb2" type="text" name="fweb2"><br>					
+					<input id="fweb2desc" type="text" name="fweb2desc"><br>					
+					<input id="fweb3" type="text" name="fweb3"><br>					
+					<input id="fweb3desc" type="text" name="fweb3desc"><br>	
+					<select name='numPics' id='numPics' onchange="updatePicNum(this)">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3" selected="selected">3</option>
+					</select><br>				
+					<input id="pic1" type="file" name="pic1"><br>
+					<input id="pic2" type="file" name="pic2"><br>
+					<input id="pic3" type="file" name="pic3"><br>
+					<input id="email" type="text" name="email"><br>	
+					<input id="password" type="password" name="password"><br><br>
+					<input id="submit" type="submit" name="submit"><br>	
+				</div>
+			</form>
+	</body>
+</html>
